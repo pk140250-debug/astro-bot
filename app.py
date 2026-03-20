@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
 from openai import OpenAI
+impoprt os
 
 app = Flask(__name__)
-import os
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route('/astro', methods=['POST'])
@@ -27,6 +28,7 @@ def astro():
         "answer": response.choices[0].message.content
     })
 
-if name == '__main__':
-    app.run(port=5000)
+@app.route('/')
+def home():
+    return "Server is running!
     
